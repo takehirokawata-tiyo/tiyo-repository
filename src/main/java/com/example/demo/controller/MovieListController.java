@@ -1,4 +1,5 @@
 package com.example.demo.controller;
+
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -16,35 +17,30 @@ import lombok.RequiredArgsConstructor;
 @Controller
 @RequiredArgsConstructor
 public class MovieListController {
+
 	private final MovieListService service;
 	
-	
-
-	//初期処理
+	/*--- 最初のリクエスト -------------------------*/
 	@GetMapping("/search")
 	private String movieList(
 			@ModelAttribute MovieSearchForm form) {
 		return "movie-list";
 	}
 	
-	//検索ボタン押下時
+	/*--- 検索リクエスト -------------------------*/
 	@PostMapping("/movie-search")
 	private String movieSearch(
 			@ModelAttribute MovieSearchForm form,
 			Model model) {
 
-		List<Movie> list = service.findByNameWildcard(form.getMovieName());
-		
-		
+		List<Movie> list
+			= service.findByNameWildcard(form.getMovieName());
 		
 		model.addAttribute("movieList", list);
 		
 		return "movie-list";
 	}
 	
-	 @GetMapping("/main-menu")
-	    public String showMainMenu() {
-	        return "MainMenu";  
-	    }
+	
 	
 }

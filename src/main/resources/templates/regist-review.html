@@ -2,24 +2,24 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>レビュー登録</title>
+<title>登録</title>
 <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
 
-	<h2>レビュー登録</h2>
+	<h2>登録</h2>
 
     <form th:action="@{/regist-review}" method="POST" 
     		th:object="${reviewRegistForm}">
-		【店舗ID】<br>
-		<input type="text" th:field="*{restaurantId}"><br>
-    	<div th:if="${#fields.hasErrors('restaurantId')}" th:errors="*{restaurantId}" class="error-msg"></div>
+		【映画ID】<br>
+		<input type="text" th:field="*{movieId}"><br>
+    	<div th:if="${#fields.hasErrors('movieId')}" th:errors="*{movieId}" class="error-msg"></div>
 		<br>
     	【利用者ID】<br>
     	<input type="text" th:field="*{userId}"><br>
     	<div th:if="${#fields.hasErrors('userId')}" th:errors="*{userId}" class="error-msg"></div>
 		<br>
-    	【来店日】<br>
+    	【閲覧日】<br>
     	<input type="date" th:field="*{visitDate}"><br>
     	<div th:if="${#fields.hasErrors('visitDate')}" th:errors="*{visitDate}" class="error-msg"></div>
 		<br>
@@ -33,6 +33,10 @@
 		<br>
     	<input type="submit" value="登録" class="btn">
     </form>
+	
+	<form th:action="@{/main-menu}" method="GET">
+			<input type="submit" value="メインメニュー" class="btn">
+		</form>
 
 </body>
 </html>
