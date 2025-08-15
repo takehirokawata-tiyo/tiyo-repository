@@ -2,53 +2,47 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-	<meta charset="UTF-8">
-	<title>映画一覧</title>
-	<link rel="stylesheet" th:href="@{/css/style.css}">
+    <meta charset="UTF-8">
+    <title>映画一覧</title>
+    <link rel="stylesheet" th:href="@{/css/search.css}">
 </head>
 
 <body>
-	<h1>
-	</h1>
+    <h1>映画一覧ページ</h1>
 
-	<h2>映画検索</h2>
-	<form th:action="@{/movie-search}" method="POST" th:object="${movieSearchForm}">
-		【映画名】（部分一致）<br>
-		<input type="text" th:field="*{movieName}"><br>
-		<br>
-		<input type="submit" value="検索" class="btn">
-	</form>
+    <div class="search-section">
+        <h2>映画検索</h2>
+        <form th:action="@{/movie-search}" method="POST" th:object="${movieSearchForm}">
+            <label for="movieName">【映画名】（部分一致）</label><br>
+            <input type="text" th:field="*{movieName}" id="movieName"><br><br>
+            <input type="submit" value="検索" class="btn">
+        </form>
+        <form th:action="@{/main-menu}" method="GET">
+            <input type="submit" value="メインメニュー" class="btn">
+        </form>
+    </div>
 
-	<form th:action="@{/main-menu}" method="GET">
-		<input type="submit" value="メインメニュー" class="btn">
-	</form>
-
-	<div th:if="${movieList} != null">
-		<h2>映画一覧</h2>
-
-		<table class="movie-list">
-			<tr>
-				<th>映画ID</th>
-				<th>映画名</th>
-				<th>監督</th>
-				<th>主演</th>
-			</tr>
-
-			<tr th:each="movie : ${movieList}">
-				<td th:text="${movie.movieId}"></td>
-				<td th:text="${movie.movieTitle}"></td>
-				<td th:text="${movie.movieGenre}"></td>
-				<td th:text="${movie.movieDirector}"></td>
-
-
-			</tr>
-
-		</table>
-
-	</div>
-
-
-
+    <div class="list-section" th:if="${movieList} != null">
+        <h2>映画一覧</h2>
+        <table class="movie-list">
+            <thead>
+                <tr>
+                    <th>映画ID</th>
+                    <th>映画名</th>
+                    <th>ジャンル</th>
+                    <th>監督</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="movie : ${movieList}">
+                    <td th:text="${movie.movieId}"></td>
+                    <td th:text="${movie.movieTitle}"></td>
+                    <td th:text="${movie.movieGenre}"></td>
+                    <td th:text="${movie.movieDirector}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </body>
 
 </html>

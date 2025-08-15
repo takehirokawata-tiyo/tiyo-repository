@@ -2,27 +2,28 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-	<meta charset="UTF-8">
-	<title>映画管理システム - メインメニュー</title>
-	<link rel="stylesheet" th:href="@{/css/style.css}">
-
+    <meta charset="UTF-8">
+    <title>映画管理システム - メインメニュー</title>
+    <link rel="stylesheet" th:href="@{/css/mainmenu.css}">
 </head>
 
 <body>
+    <div class="container">
+        <h1>映画管理システム</h1>
+        <h2>メインメニュー</h2>
 
-	<h1>映画管理システム - メインメニュー</h1>
-
-	<form th:action="@{/search}" method="GET">
-		<input type="submit" value="検索" class="btn">
-	</form>
-	<form th:action="@{/updeta}" method="GET">
-		<input type="submit" value="編集" class="btn">
-	</form>
-	<form th:action="@{/register}" method="GET">
-		<input type="submit" value="登録" class="btn">
-	</form>
-
+        <div class="menu-buttons">
+            <form th:action="@{/search}" method="GET">
+                <input type="submit" value="検索" class="btn">
+            </form>
+            <form th:action="@{/updeta}" method="GET">
+                <input type="submit" value="編集" class="btn">
+            </form>
+            <form th:action="@{/register}" method="GET">
+                <input type="submit" value="登録" class="btn">
+            </form>
+        </div>
+    </div>
 </body>
-
 
 </html>

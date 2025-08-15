@@ -1,46 +1,59 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-<meta charset="UTF-8">
-<title>登録確認</title>
-<link rel="stylesheet" th:href="@{/css/style.css}">
+	<meta charset="UTF-8">
+	<title>登録確認</title>
+	<link rel="stylesheet" th:href="@{/css/regist.css}">
 </head>
+
 <body>
-		
-	<h2>登録確認</h2>
+	<div class="container">
+		<h1>レビュー登録確認</h1>
 
-	<div th:object="${reviewRegistForm}">
-		【映画】<br>
-		<p th:text="*{movieId}"></p><br><br>
-	   	【利用者ID】<br>
-	   	<p th:text="*{userId}"></p><br><br>
-	   	【来店日】<br>
-	   	<p th:text="*{visitDate}"></p><br><br>
-	   	【評価】(1-5)<br>
-	   	<p th:text="*{rating}"></p><br><br>
-	   	【一言コメント】<br>
-	   	<p th:text="*{comment}"></p><br><br>
+		<div class="review-info" th:object="${reviewRegistForm}">
+			<div class="info-item">
+				<label>【映画ID】</label>
+				<p th:text="*{movieId}"></p>
+			</div>
+			<div class="info-item">
+				<label>【利用者ID】</label>
+				<p th:text="*{userId}"></p>
+			</div>
+			<div class="info-item">
+				<label>【閲覧日】</label>
+				<p th:text="*{visitDate}"></p>
+			</div>
+			<div class="info-item">
+				<label>【評価】(1〜5)</label>
+				<p th:text="*{rating}"></p>
+			</div>
+			<div class="info-item">
+				<label>【一言コメント】</label>
+				<p th:text="*{comment}"></p>
+			</div>
+		</div>
+
+		<div class="button-group">
+			<form th:action="@{/confirm-regist-review}" method="POST" th:object="${reviewRegistForm}">
+				<input type="hidden" th:field="*{movieId}">
+				<input type="hidden" th:field="*{userId}">
+				<input type="hidden" th:field="*{visitDate}">
+				<input type="hidden" th:field="*{rating}">
+				<input type="hidden" th:field="*{comment}">
+				<input type="submit" value="登録実行" class="btn">
+			</form>
+
+			<form th:action="@{/show-review-form-ret}" method="POST" th:object="${reviewRegistForm}">
+				<input type="hidden" th:field="*{movieId}">
+				<input type="hidden" th:field="*{userId}">
+				<input type="hidden" th:field="*{visitDate}">
+				<input type="hidden" th:field="*{rating}">
+				<input type="hidden" th:field="*{comment}">
+				<input type="submit" value="もどる" class="btn back-btn">
+			</form>
+		</div>
 	</div>
-
-    <form th:action="@{/confirm-regist-review}" method="POST"
-			th:object="${reviewRegistForm}">
-    	<input type="hidden" th:field="*{movieId}">
-    	<input type="hidden" th:field="*{userId}">
-    	<input type="hidden" th:field="*{visitDate}">
-    	<input type="hidden" th:field="*{rating}">
-    	<input type="hidden" th:field="*{comment}">
-    	<input type="submit" value="登録実行" class="btn">
-   	</form>
-
-    <form th:action="@{/show-review-form-ret}" method="POST"
-			th:object="${reviewRegistForm}">
-    	<input type="hidden" th:field="*{movieId}">
-    	<input type="hidden" th:field="*{userId}">
-    	<input type="hidden" th:field="*{visitDate}">
-    	<input type="hidden" th:field="*{rating}">
-    	<input type="hidden" th:field="*{comment}" class="btn">
-    	<input type="submit" value="もどる" class="btn">
-   	</form>
-
 </body>
+
 </html>

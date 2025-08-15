@@ -19,28 +19,25 @@ import lombok.RequiredArgsConstructor;
 public class MovieListController {
 
 	private final MovieListService service;
-	
-	/*--- 最初のリクエスト -------------------------*/
+
+	/*初期処理*/
 	@GetMapping("/search")
 	private String movieList(
 			@ModelAttribute MovieSearchForm form) {
 		return "movie-list";
 	}
-	
-	/*--- 検索リクエスト -------------------------*/
+
+	/*検索ボタン押下時*/
 	@PostMapping("/movie-search")
 	private String movieSearch(
 			@ModelAttribute MovieSearchForm form,
 			Model model) {
 
-		List<Movie> list
-			= service.findByNameWildcard(form.getMovieName());
-		
+		List<Movie> list = service.findByNameWildcard(form.getMovieName());
+
 		model.addAttribute("movieList", list);
-		
+
 		return "movie-list";
 	}
-	
-	
-	
+
 }

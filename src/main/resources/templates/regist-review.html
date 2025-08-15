@@ -1,42 +1,54 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-<meta charset="UTF-8">
-<title>登録</title>
-<link rel="stylesheet" th:href="@{/css/style.css}">
+	<meta charset="UTF-8">
+	<title>レビュー登録</title>
+	<link rel="stylesheet" th:href="@{/css/regist.css}">
 </head>
+
 <body>
+	<div class="container">
+		<h1>レビュー登録</h1>
 
-	<h2>登録</h2>
+		<form th:action="@{/regist-review}" method="POST" th:object="${reviewRegistForm}" class="form-box">
+			<div class="form-group">
+				<label for="movieId">【映画ID】</label>
+				<input type="text" th:field="*{movieId}" id="movieId">
+				<div th:if="${#fields.hasErrors('movieId')}" th:errors="*{movieId}" class="error-msg"></div>
+			</div>
 
-    <form th:action="@{/regist-review}" method="POST" 
-    		th:object="${reviewRegistForm}">
-		【映画ID】<br>
-		<input type="text" th:field="*{movieId}"><br>
-    	<div th:if="${#fields.hasErrors('movieId')}" th:errors="*{movieId}" class="error-msg"></div>
-		<br>
-    	【利用者ID】<br>
-    	<input type="text" th:field="*{userId}"><br>
-    	<div th:if="${#fields.hasErrors('userId')}" th:errors="*{userId}" class="error-msg"></div>
-		<br>
-    	【閲覧日】<br>
-    	<input type="date" th:field="*{visitDate}"><br>
-    	<div th:if="${#fields.hasErrors('visitDate')}" th:errors="*{visitDate}" class="error-msg"></div>
-		<br>
-    	【評価】(1-5)<br>
-		<input type="text" th:field="*{rating}"><br>
-    	<div th:if="${#fields.hasErrors('rating')}" th:errors="*{rating}" class="error-msg"></div>
-		<br>
-    	【一言コメント】<br>
-    	<input type="text" th:field="*{comment}" class="comment" ><br>
-    	<div th:if="${#fields.hasErrors('comment')}" th:errors="*{comment}" class="error-msg"></div>
-		<br>
-    	<input type="submit" value="登録" class="btn">
-    </form>
-	
-	<form th:action="@{/main-menu}" method="GET">
-			<input type="submit" value="メインメニュー" class="btn">
+			<div class="form-group">
+				<label for="userId">【利用者ID】</label>
+				<input type="text" th:field="*{userId}" id="userId">
+				<div th:if="${#fields.hasErrors('userId')}" th:errors="*{userId}" class="error-msg"></div>
+			</div>
+
+			<div class="form-group">
+				<label for="visitDate">【閲覧日】</label>
+				<input type="date" th:field="*{visitDate}" id="visitDate">
+				<div th:if="${#fields.hasErrors('visitDate')}" th:errors="*{visitDate}" class="error-msg"></div>
+			</div>
+
+			<div class="form-group">
+				<label for="rating">【評価】(1〜5)</label>
+				<input type="text" th:field="*{rating}" id="rating">
+				<div th:if="${#fields.hasErrors('rating')}" th:errors="*{rating}" class="error-msg"></div>
+			</div>
+
+			<div class="form-group">
+				<label for="comment">【一言コメント】</label>
+				<input type="text" th:field="*{comment}" id="comment" class="comment">
+				<div th:if="${#fields.hasErrors('comment')}" th:errors="*{comment}" class="error-msg"></div>
+			</div>
+
+			<input type="submit" value="登録" class="btn">
 		</form>
 
+		<form th:action="@{/main-menu}" method="GET">
+			<input type="submit" value="メインメニュー" class="btn back-btn">
+		</form>
+	</div>
 </body>
+
 </html>

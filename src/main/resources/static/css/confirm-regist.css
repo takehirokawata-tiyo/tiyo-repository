@@ -1,0 +1,74 @@
+@charset "UTF-8";
+
+body {
+	font-family: 'Segoe UI', sans-serif;
+	background-color: #f4f4f4;
+	margin: 0;
+	padding: 0;
+}
+
+.container {
+	max-width: 600px;
+	margin: 60px auto;
+	padding: 30px;
+	background-color: #fff;
+	border-radius: 12px;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+	text-align: center;
+	color: #2c3e50;
+	margin-bottom: 30px;
+}
+
+.review-info {
+	margin-bottom: 30px;
+}
+
+.info-item {
+	margin-bottom: 20px;
+}
+
+label {
+	font-weight: bold;
+	display: block;
+	margin-bottom: 5px;
+	color: #34495e;
+}
+
+p {
+	margin: 0;
+	padding: 8px;
+	background-color: #ecf0f1;
+	border-radius: 6px;
+}
+
+.button-group {
+	display: flex;
+	justify-content: space-between;
+	gap: 10px;
+}
+
+.btn {
+	padding: 10px 20px;
+	font-size: 16px;
+	background-color: #3498db;
+	color: white;
+	border: none;
+	border-radius: 6px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+	background-color: #2980b9;
+}
+
+.back-btn {
+	background-color: #95a5a6;
+}
+
+.back-btn:hover {
+	background-color: #7f8c8d;
+}
