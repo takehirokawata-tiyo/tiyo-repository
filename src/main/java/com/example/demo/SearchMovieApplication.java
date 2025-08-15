@@ -10,4 +10,5 @@ public class SearchMovieApplication {
 		SpringApplication.run(SearchMovieApplication.class, args);
 	}
 
+	
 }

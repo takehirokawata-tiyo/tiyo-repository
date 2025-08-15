@@ -9,5 +9,6 @@ class SearchMovieApplicationTests {
 	@Test
 	void contextLoads() {
 	}
+	
 
 }
